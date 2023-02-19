@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "hdl_analyzer"
+version = "0.0.1"
+authors = [
+  {name = "SFENCE",email="sfence.software@gmail.com"}
+]
+description = "API and scripts for analyzing HDL projects."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+  "Operating System :: OS Independent",
+]
+[project.urls]
+"Homepage" = "https://github.com/sfence/hdl_analyzer"
+"Bug Tracker" = "https://github.com/sfence/hdl_analyzer/issues"
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "src"
+]
+
