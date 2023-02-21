@@ -45,3 +45,6 @@ class ProjectLanguage():
       out_dict["includes"].append(os.path.relpath(include, directory))
     return out_dict
 
+  def analyze(self, analyzer):
+    pass
+

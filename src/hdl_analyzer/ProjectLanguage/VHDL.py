@@ -8,6 +8,6 @@ class VHDL(Language.ProjectLanguage):
     super().__init__(json_data, directory, language)
     self.file_extensions = [".vhd",".vhdl"]
   
-  def load(self, project):
+  def analyze(self, analyzer):
     for file in self.files:
-      project.load_modules(hdl_structure)
+      AstToJson.

@@ -54,3 +54,6 @@ class Project():
       languages_data[lang] = self.langs[lang].to_dict(self.directory)
     return project_dict
 
+  def analyze(self, analyzer):
+    for lang in self.langs:
+      self.langs[lang].analyze(analyzer))

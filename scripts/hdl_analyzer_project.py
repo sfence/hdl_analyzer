@@ -5,3 +5,4 @@ import os
 
 if __name__ == "__main__":
   hdl_analyzer_project.main(os.argv)
+

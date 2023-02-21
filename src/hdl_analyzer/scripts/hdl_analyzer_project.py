@@ -13,6 +13,7 @@ def main(argv):
   
   parser.add_argument("project_file", help="hdl_analyzer JSON project file.")
   parser.add_argument("--dir", dest = "dir", default = None, help = "Redefinition of base directory.")
+  
   parser.add_argument("--clear", dest = "clear", default = False, action = "store_true")
    
   parser.add_argument("--file", dest = "file", help = "One file to be added to project.")
