@@ -47,6 +47,10 @@ class Hiearchy(Analyzer.Analyzer):
           update_instance.parents.append(instance)
           if self.debug:
             print("{} new parent {}".format(update_instance.module_name, instance.module_name))
+    if len(update_instance.parents)==0:
+      update_instance.parents.append(Instance("", parent_module))
+      if self.debug:
+        print("{} new top parent {}".format(update_instance.module_name, parent_module))
   
   def _add_children(self, update_instance):
     if update_instance.module_name in self.modules:
@@ -105,7 +109,7 @@ class Hiearchy(Analyzer.Analyzer):
       for instance in instances:
         if instance.name == inst_name:
           if self.down:
-            sub_results = self._get_down(instance, [], max_levels)
+            sub_results = self._get_down(instance, [instance], max_levels)
             for sub_result in sub_results:
               results.append(sub_result)
           else:
@@ -119,8 +123,7 @@ class Hiearchy(Analyzer.Analyzer):
         instances = self.modules[module]
         for instance in instances:
           if instance.module_name == module_name:
-            results = self._get_down(instance, [], max_levels)
-            sub_results = self._get_down(instance, [], max_levels)
+            sub_results = self._get_down(instance, [instance], max_levels)
             for sub_result in sub_results:
               results.append(sub_result)
     else:
