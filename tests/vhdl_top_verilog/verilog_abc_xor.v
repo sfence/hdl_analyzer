@@ -9,7 +9,8 @@ module verilog_abc_xor(
 
   reg rb_xor = 1'b0;
   
-  always (posedge(ib_clk):
+  always @(posedge ib_clk)
+  begin
     rb_xor = ib_a ^ (~ib_nb) ^ ib_c;
   end
   

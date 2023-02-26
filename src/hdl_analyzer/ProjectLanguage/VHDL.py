@@ -1,7 +1,8 @@
 
 import hdl_analyzer.ProjectLanguage.Language as Language
 
-import hdlConvertorAst.to.json as AstToJson
+from hdlConvertor import HdlConvertor
+from hdlConvertorAst.language import Language as AstLanguage
 
 class VHDL(Language.ProjectLanguage):
   def __init__(self, json_data, directory, language):
@@ -9,5 +10,7 @@ class VHDL(Language.ProjectLanguage):
     self.file_extensions = [".vhd",".vhdl"]
   
   def analyze(self, analyzer):
-    for file in self.files:
-      AstToJson.
+    convertor = HdlConvertor()
+    for file_name in self.files:
+      parsed = convertor.parse(file_name, AstLanguage.VHDL, self.includes)
+      analyzer.apply_parsed(parsed, file_name)

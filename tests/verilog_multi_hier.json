@@ -1,0 +1,29 @@
+{
+  "directory": "/home/sfence/src/hdl_analyzer/tests",
+  "languages": {
+    "verilog": {
+      "files": [
+        "verilog_multi_hier/top.v",
+        "verilog_multi_hier/logic_l5.v",
+        "verilog_multi_hier/logic_l2.v",
+        "verilog_multi_hier/logic_l4.v",
+        "verilog_multi_hier/logic_l3.v",
+        "verilog_multi_hier/logic_l1.v"
+      ],
+      "includes": [
+        "verilog_multi_hier"
+      ],
+      "defines": []
+    },
+    "systemverilog": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    },
+    "vhdl": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    }
+  }
+}

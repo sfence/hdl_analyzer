@@ -8,7 +8,8 @@ import hdl_analyzer.ProjectLanguage.SystemVerilog as LangSystemVerilog
 import hdl_analyzer.ProjectLanguage.VHDL as LangVHDL
 
 class Project():
-  def __init__(self, project_file, directory):
+  def __init__(self, project_file, directory, debug):
+    self.debug = debug
     json_data = {}
     try:
       with open(project_file, "rb") as f:
@@ -40,9 +41,46 @@ class Project():
       "vhdl" : ProjectLanguage.VHDL.VHDL(json_data, self.directory, "vhdl")
     }
     
-  def add_file(self, file):
+  def add_file(self, file_name):
     for lang in self.langs:
-      self.langs[lang].add_file(os.path.relpath(file, self.directory))
+      self.langs[lang].add_file(os.path.join(self.directory, file_name))
+  def remove_file(self, file_name):
+    for lang in self.langs:
+      self.langs[lang].remove_file(os.path.join(self.directory, file_name))
+
+  def add_include(self, include, lang):
+    if lang in self.langs:
+      self.langs[lang].add_include(include)
+      if self.debug:
+        print("Add include {} for language {}".format(include, lang))
+    else:
+      if self.debug:
+        print("Unknown include language {}".format(include, lang))
+  def remove_include(self, include, lang):
+    if lang in self.langs:
+      self.langs[lang].remove_include(include)
+      if self.debug:
+        print("Remove include {} for language {}".format(include, lang))
+    else:
+      if self.debug:
+        print("Unknown include language {}".format(include, lang))
+
+  def add_define(self, define, lang):
+    if lang in self.langs:
+      self.langs[lang].add_define(define)
+      if self.debug:
+        print("Add define {} for language {}".format(define, lang))
+    else:
+      if self.debug:
+        print("Unknown define language {}".format(include, lang))
+  def remove_define(self, define, lang):
+    if lang in self.langs:
+      self.langs[lang].remove_define(define)
+      if self.debug:
+        print("Remove define {} for language {}".format(define, lang))
+    else:
+      if self.debug:
+        print("Unknown define language {}".format(include, lang))
   
   def to_dict(self):
     languages_data = {}
@@ -56,4 +94,5 @@ class Project():
 
   def analyze(self, analyzer):
     for lang in self.langs:
-      self.langs[lang].analyze(analyzer))
+      self.langs[lang].analyze(analyzer)
+

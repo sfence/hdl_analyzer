@@ -1,0 +1,3 @@
+
+`define PAR_GLB_DATA_BITS 32
+
