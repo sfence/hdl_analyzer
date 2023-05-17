@@ -29,4 +29,4 @@ def test_verilog_multi_hier_hiearchy():
   hdl_analyzer_hiearchy.main(cmd)
   cmd = ["tests/verilog_multi_hier.json", "--instance", "i_logic_l5_a", "--down"]
   hdl_analyzer_hiearchy.main(cmd)
-  raise(Exception("Fail here"))
+  #raise(Exception("Fail here"))
