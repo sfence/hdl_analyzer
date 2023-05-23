@@ -1,0 +1,26 @@
+{
+  "directory": "/home/sfence/src/hdl_analyzer/tests",
+  "languages": {
+    "verilog": {
+      "files": [
+        "verilog_generate/top.v",
+        "verilog_generate/cond.v",
+        "verilog_generate/logic.v"
+      ],
+      "includes": [
+        "verilog_generate"
+      ],
+      "defines": []
+    },
+    "systemverilog": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    },
+    "vhdl": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    }
+  }
+}
