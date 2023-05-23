@@ -25,6 +25,11 @@ class Hiearchy(Analyzer.Analyzer):
       self.modules[module_name].append(Instance(str(hdl_object.name), str(hdl_object.module_name)))
       if self.debug:
         print("Module {} add instanace {}".format(module_name, hdl_object.module_name))
+    elif isinstance(hdl_object, HdlStmIf):
+      self._apply_in_moduledef(hdl_object.if_true, module_name)
+      self._apply_in_moduledef(hdl_object.if_false, module_name)
+      for elif_arr in hdl_object.elifs:
+        self._apply_in_moduledef(elif_arr[1], module_name)
     elif isinstance(hdl_object, HdlStmFor):
       self._apply_in_moduledef(hdl_object.body, module_name)
     elif isinstance(hdl_object, HdlStmBlock):
@@ -81,7 +86,7 @@ class Hiearchy(Analyzer.Analyzer):
       if use_inst_name:
         name = "{}({})".format(child.name, child.module_name)
       text = "{}\n{}{}".format(text, prefix, name)
-      if name in self.modules:
+      if child.module_name in self.modules:
         text = "{}{}".format(text, self._results_text_up("", child, "{}  ".format(prefix), use_inst_name))
     return text
     
