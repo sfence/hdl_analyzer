@@ -20,7 +20,7 @@ def main(argv):
   parser.add_argument("--add-file", dest = "add_file", help = "One file to be added to project.")
   parser.add_argument("--remove-file", dest = "remove_file", help = "One file to be removed from project.")
   
-  parser.add_argument("--lang", dest = "lang", choices = ["verilog","systmeverilog","vhdl"], help = "hdl_analyzer project language to be modified.")
+  parser.add_argument("--lang", dest = "lang", choices = ["verilog","systemverilog","vhdl"], help = "hdl_analyzer project language to be modified.")
   parser.add_argument("--add-include", dest = "add_include", help = "One include to be added to project. --lang is required to be used with this.")
   parser.add_argument("--remove-include", dest = "remove_include", help = "One include to be removed from project. --lang is required to be used with this.")
   parser.add_argument("--add-define", dest = "add_define", help = "One define to be added to project. --lang is required to be used with this.")

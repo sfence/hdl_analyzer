@@ -12,6 +12,6 @@ class SystemVerilog(Language.ProjectLanguage):
   def analyze(self, analyzer):
     convertor = HdlConvertor()
     for file_name in self.files:
-      parsed = convertor.parse(file_name, AstLanguage.SYSTEMVERILOG, self.includes)
+      parsed = convertor.parse(file_name, AstLanguage.SYSTEM_VERILOG, self.includes)
       analyzer.apply_parsed(parsed, file_name)
 
