@@ -9,9 +9,13 @@ class Verilog(Language.ProjectLanguage):
     super().__init__(json_data, directory, language)
     self.file_extensions = [".v"]
   
-  def analyze(self, analyzer):
+  def analyze(self, analyzer, progress):
     convertor = HdlConvertor()
+    index = 1
     for file_name in self.files:
+      if progress:
+        print("File {}/{}: {} ...".format(index, len(self.files), file_name))
+        index = index + 1
       parsed = convertor.parse(file_name, AstLanguage.VERILOG, self.includes)
       analyzer.apply_parsed(parsed, file_name)
 
