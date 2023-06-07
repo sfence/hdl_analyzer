@@ -35,7 +35,7 @@ def main(argv):
 
   args = parser.parse_args(args=argv)
   
-  hdl_project = Project.Project(args.project_file, args.dir, args.debug)
+  hdl_project = Project.Project(args.project_file, args.dir, False, args.debug)
   
   if args.clear:
     hdl_project.clear()

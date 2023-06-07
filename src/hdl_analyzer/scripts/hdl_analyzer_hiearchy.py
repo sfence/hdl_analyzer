@@ -24,11 +24,12 @@ def main(argv):
   
   parser.add_argument("--max_levels", dest = "max_levels", type = int, default = 999, help = "Hiearchy max levels to check.")
   
+  parser.add_argument("--progress", dest = "progress", default = False, action = "store_true", help = "Print some progress info.")
   parser.add_argument("--debug", dest = "debug", default = False, action = "store_true")
   
   args = parser.parse_args(args=argv)
   
-  hdl_project = Project.Project(args.project_file, args.dir, args.debug)
+  hdl_project = Project.Project(args.project_file, args.dir, args.progress, args.debug)
     
   analyzer = Analyzer.Hiearchy(args.debug, args.down)
   hdl_project.analyze(analyzer)

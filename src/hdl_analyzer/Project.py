@@ -8,7 +8,8 @@ import hdl_analyzer.ProjectLanguage.SystemVerilog as LangSystemVerilog
 import hdl_analyzer.ProjectLanguage.VHDL as LangVHDL
 
 class Project():
-  def __init__(self, project_file, directory, debug):
+  def __init__(self, project_file, directory, progress, debug):
+    self.progress = progress
     self.debug = debug
     json_data = {}
     try:
@@ -94,5 +95,7 @@ class Project():
 
   def analyze(self, analyzer):
     for lang in self.langs:
-      self.langs[lang].analyze(analyzer)
+      if self.progress:
+        print("Analyzing language {}".format(lang))
+      self.langs[lang].analyze(analyzer, self.progress)
 
